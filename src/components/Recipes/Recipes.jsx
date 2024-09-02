@@ -1,61 +1,29 @@
-import { IoTimeOutline } from "react-icons/io5";
-import { TbFlame } from "react-icons/tb";
+import { useEffect, useState } from "react";
+import Recipe from "../Recipe/Recipe";
 
 const Recipes = () => {
+  // load data
+  const [recipes, setRecipes] = useState([]);
+  useEffect(() => {
+    fetch('recipes.json')
+    .then(res => res.json())
+    .then(data => setRecipes(data))
+  }, [])
+
   return (
     <section className="container mx-auto my-24">
       <h2 className="text-4xl font-medium text-center">Our Recipes</h2>
       <p className="mx-auto text-center my-8 w-2/3 text-[#150B2B]">Lorem ipsum dolor sit amet consectetur. Proin et feugiat senectus vulputate netus pharetra rhoncus. Eget urna volutpat curabitur elementum mauris aenean neque. </p>
       <div className="flex justify-between gap-6">
-        <div className="flex flex-col gap-4 border-2 p-4 rounded-xl">
-          <img src="https://i.ibb.co/fNVkDgn/recipe-1.jpg" alt="" />
-          <h3 className="text-xl font-semibold">Spaghetti Bolognese</h3>
-          <p className="text-[#878787]">Classic Italian pasta dish with savory meat sauce.</p>
-          <hr />
-          <h4 className="text-lg font-medium">Ingredients: 6</h4>
-          <ul className="text-[#878787]">
-            <li>500g ground beef</li>
-            <li>1 onion, chopped</li>
-            <li>2 cloves garlic, minced</li>
-          </ul>
-          <hr />
-          <div className="flex justify-between gap-4 text-[#878787]">
-            <div className="flex gap-2 items-center">
-              <p className="text-[20px]"><IoTimeOutline/></p>
-              <p>30 minutes</p>
-            </div>
-            <div className="flex gap-2 items-center">
-              <p className="text-[20px]"><TbFlame/></p>
-              <p>600 calories</p>
-            </div>
-          </div>
-          <button className="btn w-48 btn-accent rounded-full px-8 text-[#150B2B] bg-[#0BE58A] border-none text-lg font-medium">Want to Cook</button>
+        <div className="grid gap-6 grid-cols-2">
+          {
+            recipes.map(recipe => <Recipe key={recipe.id} recipe={recipe}></Recipe>)
+          }
         </div>
-        <div className="flex flex-col gap-4 border-2 p-4 rounded-xl">
-          <img src="https://i.ibb.co/fNVkDgn/recipe-1.jpg" alt="" />
-          <h3 className="text-xl font-semibold">Spaghetti Bolognese</h3>
-          <p className="text-[#878787]">Classic Italian pasta dish with savory meat sauce.</p>
-          <hr />
-          <h4 className="text-lg font-medium">Ingredients: 6</h4>
-          <ul className="text-[#878787]">
-            <li>500g ground beef</li>
-            <li>1 onion, chopped</li>
-            <li>2 cloves garlic, minced</li>
-          </ul>
-          <hr/>
-          <div className="flex justify-between gap-4 text-[#878787]">
-            <div className="flex gap-2 items-center">
-              <p className="text-[20px]"><IoTimeOutline/></p>
-              <p>30 minutes</p>
-            </div>
-            <div className="flex gap-2 items-center">
-              <p className="text-[20px]"><TbFlame/></p>
-              <p>600 calories</p>
-            </div>
-          </div>
-          <button className="btn w-48 btn-accent rounded-full px-8 text-[#150B2B] bg-[#0BE58A] border-none text-lg font-medium">Want to Cook</button>
-        </div>
-        <div className="border-2 rounded-xl py-4">
+        
+        {/* Tables */}
+        <div>
+          <div className="border-2 rounded-xl py-4">
           <div>
             <h2 className="text-2xl font-semibold text-center mb-4">Want to cook: 01</h2>
             <hr />
@@ -133,6 +101,7 @@ const Recipes = () => {
                 1050 calories</p>
               </div>
             </div>
+          </div>
           </div>
         </div>
       </div>
