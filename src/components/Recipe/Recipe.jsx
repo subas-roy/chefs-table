@@ -1,9 +1,9 @@
 import { IoTimeOutline } from "react-icons/io5";
 import { TbFlame } from "react-icons/tb";
 
-const Recipe = ({recipe}) => {
+const Recipe = ({recipe, addToCook}) => {
   const {recipe_id, recipe_name, recipe_image, short_description, ingredients, preparing_time, calories} = recipe
-  console.log(ingredients)
+  // console.log(recipe)
   return (
     <div className="flex flex-col gap-4 border-2 p-4 rounded-xl">
       <img className="m-w-[331px]" src={recipe_image} alt="" />
@@ -13,7 +13,7 @@ const Recipe = ({recipe}) => {
       <h4 className="text-lg font-medium">Ingredients: 6</h4>
       <ul className="text-[#878787]">
         {
-          ingredients.map(i => <li>{i}</li>)
+          ingredients.map(ingredient => <li>{ingredient}</li>)
         }
       </ul>
       <hr />
@@ -27,7 +27,7 @@ const Recipe = ({recipe}) => {
           <p>{calories}</p>
         </div>
       </div>
-      <button className="btn w-48 btn-accent rounded-full px-8 text-[#150B2B] bg-[#0BE58A] border-none text-lg font-medium">Want to Cook</button>
+      <button onClick={() => addToCook(recipe)} className="btn w-48 btn-accent rounded-full px-8 text-[#150B2B] bg-[#0BE58A] border-none text-lg font-medium">Want to Cook</button>
     </div>
   );
 };
