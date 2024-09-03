@@ -43,16 +43,16 @@ const Recipes = () => {
   return (
     <section className="container mx-auto my-24">
       <h2 className="text-4xl font-medium text-center">Our Recipes</h2>
-      <p className="mx-auto text-center my-8 w-2/3 text-[#150B2B]">Lorem ipsum dolor sit amet consectetur. Proin et feugiat senectus vulputate netus pharetra rhoncus. Eget urna volutpat curabitur elementum mauris aenean neque. </p>
-      <div className="flex justify-between gap-6">
-        <div className="grid gap-6 grid-cols-2">
+      <p className="mx-auto text-center my-8 w-2/3 text-[#150B2B]">Explore our diverse collection of delicious recipes, from quick and easy meals to gourmet dishes, perfect for any occasion or craving.</p>
+      <div className="md:flex justify-between gap-6">
+        <div className="grid gap-6 md:grid-cols-2">
           {
             recipes.map(recipe => <Recipe recipe={recipe} addToCook={addToCook} ></Recipe>)
           }
         </div>
         
         {/* Tables */}
-        <div>
+        <div className="mt-6 md:mt-0">
           <div className="border-2 rounded-xl py-4">
           <div>
             <h2 className="text-2xl font-semibold text-center mb-4">Want to cook: {cookList.length}</h2>
